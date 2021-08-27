@@ -1,0 +1,20 @@
+﻿
+.myDivContainer{
+    background-color:#d2d2d2;
+    display:inline-flex;
+    font-size:12px;
+    font-family:Tahoma;
+    flex-direction:row;
+    margin-left:5px;
+    justify-content:center;
+    width:315px;
+    
+    
+}
+
+.myDiv{
+    width: 100px;
+    height:100px;
+    margin:5px;
+    border: 1px #000 solid;
+}
