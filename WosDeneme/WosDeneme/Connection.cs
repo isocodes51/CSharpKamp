@@ -14,39 +14,35 @@ namespace WosDeneme
        
         public void Conn()
         {
-            HttpWebRequest xhr = (HttpWebRequest)HttpWebRequest.Create("https://wos-api.clarivate.com/api/wos/?databaseId=WOS&lang=English&usrQuery=%C5%9EE%C5%9EEN%2C%20YAS%C4%B0N&count=100&firstRecord=1");
-            HttpWebResponse res = xhr.GetResponse() as HttpWebResponse;
+            HttpWebRequest xhr = (HttpWebRequest)HttpWebRequest.Create("https://wos-api.clarivate.com/api/woslite/?databaseId=WOS&usrQuery=TS%3D%28cadmium%29&count=5&firstRecord=1");
             xhr.Method = "GET";
-            xhr.Headers["X-API-Key"] = "8b88d28c52323732785d0490e30b0ff42986d01d";
+            xhr.Headers.Add("X-ApiKey", "6b46ffda86a7a3e9aa2336cd846bfd5f09e18708");
 
+            HttpWebResponse res = xhr.GetResponse() as HttpWebResponse;
+           
             StreamReader sr = new StreamReader(res.GetResponseStream());
             string data = sr.ReadToEnd();
             sr.Close();
             xhr.ContentType = "text/xml";
-            Console.WriteLine(data);
+            Console.WriteLine("Data:"+data);
            
-            //using (Stream requestStream = xhr.GetRequestStream())
-            //{
-            //    //  Console.WriteLine("Veri alınma çalışacak gibi");
-            //    requestStream.Read(;
-            //}
             
 
         }
 
-        public void Conn2()
-        {
-            HttpClient client = new HttpClient();
+        //public void Conn2()
+        //{
+        //    HttpClient client = new HttpClient();
 
-            HttpRequestMessage request = new HttpRequestMessage(System.Net.Http.HttpMethod.Get, "https://wos-api.clarivate.com/api/wos/?databaseId=WOS&lang=English&usrQuery=%C5%9EE%C5%9EEN%2C%20YAS%C4%B0N&count=100&firstRecord=1");
+        //    HttpRequestMessage request = new HttpRequestMessage(System.Net.Http.HttpMethod.Get, "https://wos-api.clarivate.com/api/woslite/?databaseId=WOS&lang=English&usrQuery=%C5%9EE%C5%9EEN%2C%20YAS%C4%B0N&count=100&firstRecord=1");
 
-            request.Headers.Add("accept", "application/json");
-            request.Headers.Add("X-ApiKey", "8b88d28c52323732785d0490e30b0ff42986d01d");
+        //    request.Headers.Add("accept", "application/json");
+        //    request.Headers.Add("X-ApiKey", "6b46ffda86a7a3e9aa2336cd846bfd5f09e18708");
 
-            //HttpResponseMessage response = await client.SendAsync(request);
-            //response.EnsureSuccessStatusCode();
-            //string responseBody = await response.Content.ReadAsStringAsync();
-        }
+        //    //HttpResponseMessage response = await client.SendAsync(request);
+        //    //response.EnsureSuccessStatusCode();
+        //    //string responseBody = await response.Content.ReadAsStringAsync();
+        //}
        
     }
 }
